@@ -1,0 +1,21 @@
+import { Link, useNavigate } from 'react-router-dom';
+
+export function CreateList({ value }) {
+    const navigate = useNavigate();
+    return (
+        <tbody>
+            {value.map((element, index) => {
+                return (
+                    <tr>
+                        <td>{index + 1}</td>
+                        <td>{element.Id_no}</td>
+                        <td>{element.name}</td>
+                        <td>{element.place}</td>
+                        <td><Link to={"/profile/" + element.Id_no}><button className='btn btn-outline-dark btn-light' onClick={() => navigate("/profile/" + index)}>View Details</button></Link></td>
+                    </tr>
+                )
+            })
+            }
+        </tbody>
+    );
+}

@@ -1,0 +1,12 @@
+Design an UI to implement the CRUD 
+
+// CRUD - Create,Read,Update,Delete 
+// Dashboard 
+
+// List Users - /users 
+// Create User - /create-user 
+// profile - /profile/:id 
+
+// Edit User - /edit-user/:id 
+// edit-profile – /edit-profile/:id
+

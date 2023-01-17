@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+ul > li{
+  list-style-type: none;
+}
+.HomePage,.Template{
+  width:auto;
+  height:100vh;
+
+}
+.User-list, .Create-user{
+  width:auto;
+  height:100vh;
+
+}
+.Form-Input{
+  width:30rem;
+  height:50rem;
+}
+
