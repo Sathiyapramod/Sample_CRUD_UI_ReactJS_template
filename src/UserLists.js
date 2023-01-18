@@ -1,11 +1,11 @@
 
 import { CreateList } from './CreateList';
 
-export function UserLists({ value }) {
+export function UserLists({ finalList, viewuser, setList }) {
     return (
         <div className="User-list container bg-lighter mt-3">
         <h1>Users Lists </h1>
-            {(value.length > 0) ? <table className="table table-striped">
+            {(finalList.length > 0) ? <table className="table table-striped">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -15,7 +15,7 @@ export function UserLists({ value }) {
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <CreateList value={value} />
+                <CreateList finalList={finalList} setList={setList}/>
             </table> :  <table className="table table-striped">
                 <thead>
                     <tr>

@@ -20,31 +20,31 @@ export const Lists = [
     {
         Id_no: "104",
         name: "Kumar",
-        place : "Delhi",
-        Country : "India"
+        place : "New York",
+        country :"USA"
     },
     {
         Id_no: "105",
         name: "Kevin",
         place : "Lisbon",
-        Country : "Portugal"
+        country : "Portugal"
     },
     {
         Id_no: "108",
         name: "Joseph",
         place : "Singapore",
-        Country : "Singapore"
+        country : "Singapore"
     },
     {
         Id_no: "111",
         name: "Satya",
         place : "Chennai",
-        Country : "India"
+        country : "India"
     },
     {
         Id_no: "122",
         name: "Shiva",
         place : "Delhi",
-        Country : "India"
+        country : "India"
     },
 ]
