@@ -11,8 +11,9 @@ import { EditContent } from './EditContent';
 import { EditProfileUsers } from './EditUsers';
 
 function App() {
-  //Initiating the users lists
+  //Initiating the users at the parent stage
   const [finalList, setList] = useState(Lists);
+
   const deleteUser = id => {
     setList(finalList.filter(user => user.Id_no !== id));
   }
@@ -26,9 +27,9 @@ function App() {
         <div className='bg-light'>
           <Routes>
             <Route path="/" element={<Welcome />} />
-            <Route path="/users" element={<UserLists value={finalList} viewuser={ViewUser} />} />
-            <Route path="/create-user" element={<CreateUser />} />
-            <Route path="/profile/:id" element={<ViewUser />} />
+            <Route path="/users" element={<UserLists finalList={finalList} viewuser={ViewUser} setList={setList} />} />
+            <Route path="/create-user" element={<CreateUser setList={setList} />} />
+            <Route path="/profile/:id" element={<ViewUser finalList={finalList} />} />
             <Route path="/edit-user/" element={<EditUser value={finalList} deleteContent={deleteUser} />} />
             <Route path="/edit-profile/" element={<EditProfile />} />
             <Route path="/edit-profile/:indices" element={<ProfileOptions />} />
@@ -58,28 +59,31 @@ function App() {
       </div>
     );
   }
-  function ViewUser() {
+  function ViewUser({ finalList }) {
     const { id } = useParams();
     const navigate = useNavigate();
+    const user = finalList[id];
     let url = "https://cdn.pixabay.com/photo/2020/07/14/13/07/icon-5404125_1280.png";
     return (
       <div className='text-center bg-light p-3'>
         <button className='btn btn-outline-dark ' onClick={() => navigate("/users")}>Go back</button>
         <div className='container gap-2 fs-5 p-3'>
-          <div className='d-flex column justify-content-between align-items-center'>
-            <div>
-              <label>User's ID number :</label>
-              <span>{id}</span>
-            </div>
+          <div className='d-flex column justify-content-center align-items-center gap-3'>
             <div className='img-thumbnail rounded-circle'>
-              <img src={url} alt={"Profilepic"} width={"100rem"} height={"100rem"} />
+              <img src={url} alt={"Profilepic"} width={"200rem"} height={"200rem"} />
+            </div>
+            <div className='details d-flex flex-column text-start fs-4 p-3 shadow m-3'>
+              <div>Name: {user.name}</div>
+              <div>ID : {user.Id_no}</div>
+              <div>Place : {user.place}</div>
+              <div>Country : {user.country}</div>
             </div>
           </div>
         </div>
       </div>
     )
   }
-  function CreateUser() {
+  function CreateUser({ setList }) {
     const [name, setName] = useState("");
     const [id, setId] = useState("");
     const [place, setPlace] = useState("");
