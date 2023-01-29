@@ -9,7 +9,7 @@ export default function CreateList() {
     fetch(`${URL}/students`, { method: "GET" })
       .then((response) => response.json())
       .then((result) => {
-        // console.log(result);
+        console.log(result);
         setArr(result);
       });
   }, []);
