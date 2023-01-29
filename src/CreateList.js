@@ -9,7 +9,7 @@ export default function CreateList() {
     fetch(`${URL}/students`, { method: "GET" })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         setArr(result);
       });
   }, []);
@@ -22,16 +22,7 @@ export default function CreateList() {
 
             <td>{element.name}</td>
             <td>{element.place}</td>
-            <td>
-              <Link to={"/profile/"+ index}>
-                <button
-                  className="btn btn-outline-dark btn-light"
-                  onClick={() => navigate("/profile/" + index)}
-                >
-                  View Details
-                </button>
-              </Link>
-            </td>
+           <td>{element.country}</td>
           </tr>
         );
       })}

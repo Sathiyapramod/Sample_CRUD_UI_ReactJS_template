@@ -10,7 +10,7 @@ export function UserLists() {
             <th>#</th>
             <th>Name</th>
             <th>Place</th>
-            <th>Actions</th>
+            <th>Country</th>
           </tr>
         </thead>
         <CreateList />

@@ -1,11 +1,13 @@
 // import logo from './logo.svg';
 import "./App.css";
 import { Navbar } from "./Navbar";
-import { Routes, Route, useParams, useNavigate } from "react-router-dom";
+import { Routes, Route, useParams, useNavigate, Navigate } from "react-router-dom";
 import { UserLists } from "./UserLists";
 import { Welcome } from "./Welcome";
 import Createuser from "./Createuser";
 import Edit from "./Edit";
+import DetailsEdit from "./DetailsEdit";
+import PageNotFound from "./PageNotFound";
 
 function App() {
   //Initiating the users at the parent stage
@@ -13,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <div className="bg-dark text-white rounded-2 p-3">
+        <div className="bg-dark text-white rounded-2">
           <Navbar />
         </div>
         <div className="bg-light">
@@ -22,11 +24,9 @@ function App() {
             <Route path="/users" element={<UserLists />} />
             <Route path="/edit" element={<Edit />} />
             <Route path="/create" element={<Createuser />} />
-            <Route
-              path="/profile/:id"
-              element={<ViewUser />}
-            />
-            <Route path="/edit-profile/:indices" element={<ProfileOptions />} />
+            <Route path="/users/edit/:id" element={<DetailsEdit />} />
+            <Route path="/404" element={<PageNotFound />} />
+            <Route path="/*" element={<Navigate replace to="/404" />} />
           </Routes>
         </div>
       </div>
@@ -87,7 +87,6 @@ function App() {
       </div>
     );
   }
-  
 }
 
 export default App;

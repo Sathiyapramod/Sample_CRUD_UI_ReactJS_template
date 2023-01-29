@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { URL } from "./BasicData";
+import EditIcon from "@mui/icons-material/Edit";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import {IconButton } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 function Edit() {
   const [input, setInput] = useState([]);
+  const navigate = useNavigate();
   const getdetails = () => {
     fetch(`${URL}/students`, { method: "GET" })
       .then((response) => response.json())
@@ -19,28 +26,41 @@ function Edit() {
             <th>Id no.</th>
             <th>Name</th>
             <th>Place</th>
-            <th>Action</th>
+            <th colSpan={2}>Action</th>
           </tr>
         </thead>
         <tbody>
-          {input.map((element,index) => (
+          {input.map((element, index) => (
             <tr key={index}>
               <td>{index}</td>
               <td>{element.id}</td>
               <td>{element.name}</td>
               <td>{element.place}</td>
-              <td><button className="btn btn-outline-primary" onClick={()=>{
-                fetch(`${URL}/students/${element.id}`, {method: "DELETE"})
-                .then(()=>getdetails());
-              }}>
-                Delete
-              </button></td>
+              <td>
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => {
+                    fetch(`${URL}/students/${element.id}`, {
+                      method: "DELETE",
+                    }).then(() => getdetails());
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+                <Button
+                  onClick={() => {
+                    navigate(`/users/edit/${element.id}`);
+                  }}
+                >
+                  <EditIcon />
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
       <footer className="text-start p-3">
-        Alert !! Delete Options triggered using API calls.. 
+        Alert !! Delete Options triggered using API calls..
       </footer>
     </div>
   );
