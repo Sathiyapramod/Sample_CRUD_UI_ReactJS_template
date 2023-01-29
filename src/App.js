@@ -6,17 +6,12 @@ import { Routes, Route, useParams, useNavigate } from 'react-router-dom';
 import { UserLists } from './UserLists';
 import { Welcome } from './Welcome';
 import { Lists } from './Lists';
-import { EditUser } from './EditUser';
-import { EditContent } from './EditContent';
-import { EditProfileUsers } from './EditUsers';
+import Edit from './Edit';
+
 
 function App() {
   //Initiating the users at the parent stage
   const [finalList, setList] = useState(Lists);
-
-  const deleteUser = id => {
-    setList(finalList.filter(user => user.Id_no !== id));
-  }
 
   return (
     <div className="App">
@@ -27,11 +22,10 @@ function App() {
         <div className='bg-light'>
           <Routes>
             <Route path="/" element={<Welcome />} />
-            <Route path="/users" element={<UserLists finalList={finalList} viewuser={ViewUser} setList={setList} />} />
+            <Route path="/users" element={<UserLists />} />
+            <Route path="/edit" element={<Edit />} />
             <Route path="/create-user" element={<CreateUser setList={setList} />} />
             <Route path="/profile/:id" element={<ViewUser finalList={finalList} />} />
-            <Route path="/edit-user/" element={<EditUser value={finalList} deleteContent={deleteUser} />} />
-            <Route path="/edit-profile/" element={<EditProfile />} />
             <Route path="/edit-profile/:indices" element={<ProfileOptions />} />
           </Routes>
         </div>
@@ -50,15 +44,7 @@ function App() {
       </div>
     )
   }
-  function EditProfile() {
 
-    return (
-      <div className='Template'>
-        <EditContent />
-        <EditProfileUsers value={finalList} />
-      </div>
-    );
-  }
   function ViewUser({ finalList }) {
     const { id } = useParams();
     const navigate = useNavigate();
