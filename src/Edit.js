@@ -40,6 +40,7 @@ function Edit() {
                 <IconButton
                   aria-label="delete"
                   onClick={() => {
+                    alert("Are you Sure want to delete ???")
                     fetch(`${URL}/students/${element.id}`, {
                       method: "DELETE",
                     }).then(() => getdetails());
