@@ -16,7 +16,7 @@ function DetailsEdit() {
         // console.log(result);
         setArr(result);
       });
-  }, [] );
+  }, [id] );
 
   return (arr ? <EditForm arr={arr} /> :  "Loading ....");
 }
